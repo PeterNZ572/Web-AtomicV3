@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "atomic-page-builder": {
+      "command": "npx",
+      "args": ["tsx", "src/mcp/server.ts"],
+      "env": {
+        "NODE_OPTIONS": "--no-deprecation"
+      }
+    }
+  }
+}
