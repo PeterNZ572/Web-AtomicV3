@@ -54,3 +54,21 @@ export const getPageBySlug = cache(async (slug: string): Promise<PageDocument | 
 
   return cached(slug)
 })
+
+// The homepage is edited frequently through the visual builder. Keep its
+// rendered sections fresh instead of waiting for the shared ISR cache.
+export const getPageBySlugFresh = async (slug: string): Promise<PageDocument | null> => {
+  const payload = await getPayloadClient()
+  const result = await payload.find({
+    collection: 'pages',
+    depth: 6,
+    limit: 1,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+  })
+
+  return (result.docs[0] as PageDocument) || null
+}

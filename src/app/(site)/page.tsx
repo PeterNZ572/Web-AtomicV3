@@ -1,24 +1,18 @@
-import Link from 'next/link'
-import { getPageBySlug } from '@/lib/content'
+import { AtomicHero } from '@/_site-specific/components/AtomicHero'
 import { PageRenderer } from '@/components/page-builder/page-renderer'
+import { getPageBySlugFresh } from '@/lib/content'
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
-  const page = await getPageBySlug('home')
-
-  if (!page) {
-    return (
-      <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-        <h1>Welcome to Atomic CMS</h1>
-        <p>No home page found. <Link href="/admin">Go to admin</Link> to create one.</p>
-      </main>
-    )
-  }
+  // The visual builder's homepage uses `/` as its slug. Keep the legacy
+  // `home` lookup as a fallback for sites copied from the original starter.
+  const page = (await getPageBySlugFresh('/')) || (await getPageBySlugFresh('home'))
 
   return (
     <main>
-      <PageRenderer sections={page.contentBuilder} />
+      <AtomicHero />
+      <PageRenderer sections={page?.contentBuilder} />
     </main>
   )
 }

@@ -7,3 +7,7 @@ src/app/api/forms/submit/route.ts — form submission handler (hardcoded atomicd
 To get started: copy .env.example to .env, set your DATABASE_URI, and run npm install && npm run migrate && npm run dev.
 
 git submodule add https://github.com/peternz572/AIPreferences.git ai
+
+ssh -L 5433:10.0.1.8:5432 root@108.61.185.48
+
+ssh -N -L 5433:10.0.1.8:5432 root@108.61.185.48 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes

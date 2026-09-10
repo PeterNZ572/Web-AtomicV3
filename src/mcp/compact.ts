@@ -157,8 +157,16 @@ const expandRow = (row: CompactRow, blocks: Map<string, Block>, path: string) =>
   }
 
   // Payload models the areas as discrete column1..column4 groups, not an array.
+  // Only write the slots this layout actually uses: the renderer emits a wrapper
+  // for every non-empty slot, and a stray one still consumes a grid gap.
   for (let index = 0; index < MAX_COLUMNS; index += 1) {
     const column = columns[index]
+
+    if (index >= allowed) {
+      expanded[`column${index + 1}`] = null
+      continue
+    }
+
     expanded[`column${index + 1}`] = column
       ? expandColumn(column, blocks, `${path}.columns[${index}]`)
       : { contentBlocks: [] }

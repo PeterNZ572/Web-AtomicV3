@@ -31,6 +31,7 @@ import { AtomicAdminIcon as AtomicAdminIcon_22b3d78253fa8ef5ef5697ccfd912005 } f
 import { AtomicAdminLogo as AtomicAdminLogo_a7a3f7421b3891796793c0b32dbea2c9 } from '../../../app/(payload)/components/admin/AtomicAdminLogo.tsx'
 import { BackupNavLink as BackupNavLink_f91bbcad2c206065d6644c76a0db680c } from '../../../app/(payload)/components/admin/BackupNavLink.tsx'
 import { DashboardHero as DashboardHero_e03847ff0f8e950fa3b18577612c2d50 } from '../../../_site-specific/components/admin/DashboardHero.tsx'
+import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { BackupManagerView as BackupManagerView_bf4a16397b4be27c9448b2f683c6b994 } from '../../../app/(payload)/components/admin/BackupManagerView.tsx'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
@@ -69,6 +70,7 @@ export const importMap = {
   "./app/(payload)/components/admin/AtomicAdminLogo.tsx#AtomicAdminLogo": AtomicAdminLogo_a7a3f7421b3891796793c0b32dbea2c9,
   "./app/(payload)/components/admin/BackupNavLink.tsx#BackupNavLink": BackupNavLink_f91bbcad2c206065d6644c76a0db680c,
   "./_site-specific/components/admin/DashboardHero.tsx#DashboardHero": DashboardHero_e03847ff0f8e950fa3b18577612c2d50,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
   "./app/(payload)/components/admin/BackupManagerView.tsx#BackupManagerView": BackupManagerView_bf4a16397b4be27c9448b2f683c6b994,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

@@ -36,6 +36,10 @@ export default buildConfig({
         },
         migrationDir: path.resolve(dirname, 'migrations-postgres'),
         idType: 'uuid',
+        // Payload auto-pushes schema changes whenever NODE_ENV !== 'production',
+        // which would silently ALTER (and drop) tables on whatever database
+        // DATABASE_URI points at. Opt in explicitly instead.
+        push: process.env.PAYLOAD_DB_PUSH === 'true',
       })
     : sqliteAdapter({
         client: {
