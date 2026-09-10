@@ -1088,6 +1088,12 @@ body {
   margin: 0 auto;
 }
 
+@media (min-width: 801px) {
+  .atomic-site-header__inner {
+    width: min(100% - 4rem, 90rem);
+  }
+}
+
 .atomic-site-header__inner {
   min-height: 7.25rem;
   display: grid;
@@ -1890,4 +1896,383 @@ body {
     .contact-cta-action {
         justify-content: flex-start;
     }
+}
+
+/* Dedicated contact page -------------------------------------------------- */
+
+.site-shell .atomic-contact {
+  color: #050505;
+  background: #fff;
+}
+
+.site-shell .atomic-contact__container {
+  width: min(100% - 3rem, 77.5rem);
+  margin: 0 auto;
+}
+
+.site-shell .atomic-contact__hero {
+  padding: clamp(4rem, 8vw, 6.6rem) 0 clamp(3.1rem, 5vw, 3.9rem);
+  border-bottom: 1px solid #ddd;
+}
+
+.site-shell .atomic-contact__label,
+.site-shell .atomic-contact__kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0;
+  color: #050505;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-shell .atomic-contact__label::before {
+  width: 2.25rem;
+  height: 0.19rem;
+  content: '';
+  background: #087df2;
+}
+
+.site-shell .atomic-contact h1 {
+  max-width: 11.5ch;
+  margin: 1.65rem 0 0;
+  color: #050505;
+  font-size: clamp(4rem, 8vw, 7.25rem);
+  font-weight: 850;
+  letter-spacing: -0.078em;
+  line-height: 0.87;
+}
+
+.site-shell .atomic-contact h1 span {
+  color: #087df2;
+}
+
+.site-shell .atomic-contact__hero-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+  gap: clamp(2.5rem, 7vw, 5rem);
+  align-items: end;
+  margin-top: clamp(2.35rem, 4vw, 3.25rem);
+}
+
+.site-shell .atomic-contact__hero-bottom > p {
+  max-width: 43rem;
+  margin: 0;
+  color: #424242;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.site-shell .atomic-contact__availability {
+  padding-left: 1.3rem;
+  border-left: 0.2rem solid #087df2;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.site-shell .atomic-contact__availability strong,
+.site-shell .atomic-contact__availability span {
+  display: block;
+}
+
+.site-shell .atomic-contact__availability span {
+  color: #666;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.site-shell .atomic-contact__section {
+  padding: clamp(4rem, 7vw, 5.4rem) 0 clamp(5.5rem, 9vw, 7.2rem);
+}
+
+.site-shell .atomic-contact__grid {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(3rem, 7vw, 5.6rem);
+  align-items: start;
+}
+
+.site-shell .atomic-contact__kicker {
+  color: #087df2;
+}
+
+.site-shell .atomic-contact__side > h2 {
+  max-width: 10ch;
+  margin: 1.6rem 0 0;
+  color: #050505;
+  font-size: clamp(2.25rem, 3.5vw, 2.65rem);
+  font-weight: 820;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.site-shell .atomic-contact__side > h2 + p {
+  max-width: 24.5rem;
+  margin: 1.45rem 0 0;
+  color: #5d5d5d;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.site-shell .atomic-contact__details {
+  margin: 3.1rem 0 0;
+  border-top: 2px solid #050505;
+}
+
+.site-shell .atomic-contact__details > div {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.site-shell .atomic-contact__details dt {
+  margin-bottom: 0.375rem;
+  color: #777;
+  font-size: 0.63rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-shell .atomic-contact__details dd {
+  margin: 0;
+  color: #050505;
+  font-size: 1rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.site-shell .atomic-contact__details a {
+  transition: color 160ms ease;
+}
+
+.site-shell .atomic-contact__details a:hover,
+.site-shell .atomic-contact__details a:focus-visible {
+  color: #087df2;
+}
+
+.site-shell .atomic-contact__form form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 1.5rem;
+  margin: 0;
+  padding: 1.75rem 2rem 2rem;
+  border: 2px solid #050505;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 1rem 1rem 0 #087df2;
+}
+
+.site-shell .atomic-contact__form form > h3 {
+  margin: 0;
+  color: #050505;
+  font-family: inherit;
+  font-size: 1.125rem;
+  font-weight: 820;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.site-shell .atomic-contact__form form > h3 + p {
+  margin: 0;
+  align-self: center;
+  color: #666;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.site-shell .atomic-contact__form form > .mt-6.grid {
+  grid-column: 1 / -1;
+  gap: 1.375rem;
+  margin-top: 2rem;
+}
+
+.site-shell .atomic-contact__form form label {
+  gap: 0.55rem;
+}
+
+.site-shell .atomic-contact__form form label > span {
+  color: #050505;
+  font-size: 0.71rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-shell .atomic-contact__form form input,
+.site-shell .atomic-contact__form form textarea,
+.site-shell .atomic-contact__form form select {
+  border: 1.5px solid #aaa;
+  border-radius: 0;
+  padding: 0.875rem;
+  color: #050505;
+  font-family: inherit;
+  font-size: 0.94rem;
+  line-height: 1.4;
+}
+
+.site-shell .atomic-contact__form form textarea {
+  min-height: 10.3rem;
+  resize: vertical;
+}
+
+.site-shell .atomic-contact__form form input:focus,
+.site-shell .atomic-contact__form form textarea:focus,
+.site-shell .atomic-contact__form form select:focus {
+  border-color: #087df2;
+  box-shadow: 0 0 0 1px #087df2;
+}
+
+.site-shell .atomic-contact__form form input::placeholder,
+.site-shell .atomic-contact__form form textarea::placeholder {
+  color: #7f8792;
+  opacity: 1;
+}
+
+.site-shell .atomic-contact__form form > .mt-6.flex {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.site-shell .atomic-contact__form form > .mt-6.flex > div {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 1rem;
+  order: 2;
+}
+
+.site-shell .atomic-contact__form form > .mt-6.flex button {
+  min-height: 3.25rem;
+  padding: 0.9rem 1.35rem;
+  border: 2px solid #050505;
+  border-radius: 0;
+  color: #fff;
+  background: #050505;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.025em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.site-shell .atomic-contact__form form > .mt-6.flex button:hover,
+.site-shell .atomic-contact__form form > .mt-6.flex button:focus-visible {
+  border-color: #087df2;
+  background: #087df2;
+}
+
+.site-shell .atomic-contact__form form > .mt-6.flex > p {
+  order: 1;
+  max-width: 22.5rem;
+  margin: 0 auto 0 0;
+  color: #777;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.site-shell .atomic-contact__form form > .mt-6.flex > p:last-child {
+  margin-left: 0;
+}
+
+.site-shell .atomic-contact__prompt {
+  padding: clamp(3.8rem, 6vw, 4.3rem) 0;
+  color: #fff;
+  background: #050505;
+}
+
+.site-shell .atomic-contact__prompt-grid {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(2.5rem, 6vw, 4.4rem);
+}
+
+.site-shell .atomic-contact__prompt .atomic-contact__kicker {
+  align-self: start;
+  margin-top: 0.45rem;
+  color: #087df2;
+}
+
+.site-shell .atomic-contact__prompt h2 {
+  max-width: 15ch;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-weight: 830;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.site-shell .atomic-contact__prompt h2 span {
+  color: #087df2;
+}
+
+@media (max-width: 900px) {
+  .site-shell .atomic-contact__hero-bottom,
+  .site-shell .atomic-contact__grid,
+  .site-shell .atomic-contact__prompt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-shell .atomic-contact__hero-bottom {
+    gap: 1.9rem;
+  }
+
+  .site-shell .atomic-contact__grid {
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-shell .atomic-contact__container {
+    width: min(100% - 1.75rem, 77.5rem);
+  }
+
+  .site-shell .atomic-contact__hero {
+    padding-top: 4rem;
+  }
+
+  .site-shell .atomic-contact h1 {
+    font-size: clamp(3.6rem, 16vw, 4.75rem);
+  }
+
+  .site-shell .atomic-contact__form form {
+    grid-template-columns: 1fr;
+    padding: 1.35rem;
+    box-shadow: 0.6rem 0.6rem 0 #087df2;
+  }
+
+  .site-shell .atomic-contact__form form > h3 + p {
+    margin-top: 0.35rem;
+  }
+
+  .site-shell .atomic-contact__form form > .mt-6.grid {
+    grid-template-columns: 1fr;
+    margin-top: 1.5rem;
+  }
+
+  .site-shell .atomic-contact__form form > .mt-6.flex,
+  .site-shell .atomic-contact__form form > .mt-6.flex > div {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-shell .atomic-contact__form form > .mt-6.flex > div {
+    flex-direction: column-reverse;
+  }
 }

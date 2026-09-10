@@ -163,7 +163,6 @@ const expandRow = (row: CompactRow, blocks: Map<string, Block>, path: string) =>
     const column = columns[index]
 
     if (index >= allowed) {
-      expanded[`column${index + 1}`] = null
       continue
     }
 
