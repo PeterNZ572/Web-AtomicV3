@@ -206,18 +206,24 @@ function MobileNetwork({ activeSystem, onActivate }: { activeSystem: SystemKey |
         <span>Tap to explore</span>
       </div>
       <div className={styles.mobileCanvas}>
-        <svg className={styles.mobileConnectors} viewBox="0 0 360 520" aria-hidden="true">
-          <path d="M 180 78 C 180 138, 180 175, 180 220" />
-          <path d="M 82 171 C 108 190, 125 226, 140 258" />
-          <path d="M 180 374 C 180 414, 180 438, 180 467" />
-          <circle r="5"><animateMotion dur="6s" keyPoints="0;0;1;1" keyTimes="0;.04;.26;1" path="M 180 78 C 180 138, 180 175, 180 220" repeatCount="indefinite" /></circle>
-          <circle r="5"><animateMotion dur="6s" keyPoints="0;0;1;1" keyTimes="0;.35;.57;1" path="M 82 171 C 108 190, 125 226, 140 258" repeatCount="indefinite" /></circle>
-          <circle r="5"><animateMotion dur="6s" keyPoints="0;0;1;1" keyTimes="0;.65;.88;1" path="M 180 374 C 180 414, 180 438, 180 467" repeatCount="indefinite" /></circle>
+        <svg className={styles.mobileConnectors} viewBox="0 0 360 470" aria-hidden="true">
+          <path d="M 180 74 C 180 118, 180 142, 180 177" />
+          <path d="M 80 168 C 108 182, 129 199, 144 222" />
+          <path d="M 280 168 C 252 182, 231 199, 216 222" />
+          <path d="M 80 380 C 108 360, 129 342, 144 319" />
+          <path d="M 280 380 C 252 360, 231 342, 216 319" />
+          <circle r="4"><animateMotion dur="7s" keyPoints="0;0;1;1" keyTimes="0;.04;.28;1" path="M 180 74 C 180 118, 180 142, 180 177" repeatCount="indefinite" /></circle>
+          <circle r="4"><animateMotion dur="7s" keyPoints="0;0;1;1" keyTimes="0;.18;.42;1" path="M 80 168 C 108 182, 129 199, 144 222" repeatCount="indefinite" /></circle>
+          <circle r="4"><animateMotion dur="7s" keyPoints="0;0;1;1" keyTimes="0;.32;.56;1" path="M 280 168 C 252 182, 231 199, 216 222" repeatCount="indefinite" /></circle>
+          <circle r="4"><animateMotion dur="7s" keyPoints="0;0;1;1" keyTimes="0;.48;.72;1" path="M 80 380 C 108 360, 129 342, 144 319" repeatCount="indefinite" /></circle>
+          <circle r="4"><animateMotion dur="7s" keyPoints="0;0;1;1" keyTimes="0;.64;.88;1" path="M 280 380 C 252 360, 231 342, 216 319" repeatCount="indefinite" /></circle>
         </svg>
         <SystemNode system="excel" active={activeSystem === 'excel'} onActivate={onActivate} className={styles.mobileExcel} />
         <SystemNode system="crm" active={activeSystem === 'crm'} onActivate={onActivate} className={styles.mobileCrm} />
+        <SystemNode system="website" active={activeSystem === 'website'} onActivate={onActivate} className={styles.mobileWebsite} />
         <CoreSystem activeSystem={activeSystem} mobile />
         <SystemNode system="xero" active={activeSystem === 'xero'} onActivate={onActivate} className={styles.mobileXero} />
+        <SystemNode system="database" active={activeSystem === 'database'} onActivate={onActivate} className={styles.mobileDatabase} />
       </div>
       <DetailPanel activeSystem={activeSystem} />
     </div>
