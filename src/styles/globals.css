@@ -471,6 +471,199 @@ body {
   }
 }
 
+/* CMS row: four-step process on a dark section -------------------------- */
+
+.site-shell .process-steps-row-alt > .grid {
+  gap: 0;
+}
+
+.site-shell .process-steps-alt .prose {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.86);
+}
+
+.site-shell .process-steps-alt .process-step {
+  display: flex;
+  flex-direction: column;
+  min-height: 17.5rem;
+  padding: clamp(1.7rem, 3vw, 2.8rem);
+  color: #fff;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.site-shell .process-steps-alt .process-step:first-child {
+  border-left: 0;
+}
+
+.site-shell .process-steps-alt .process-step__number {
+  margin: 0;
+  color: #43a7ff;
+  font-family: Bahnschrift, "Aptos Display", sans-serif;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+}
+
+.site-shell .process-steps-alt .process-step h3 {
+  margin: clamp(3.3rem, 6vw, 5.5rem) 0 0;
+  color: #fff;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 740;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.site-shell .process-steps-alt .process-step > p:last-child {
+  margin: 0.85rem 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 850px) {
+  .site-shell .process-steps-alt .prose {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-shell .process-steps-alt .process-step:nth-child(3) {
+    border-left: 0;
+  }
+
+  .site-shell .process-steps-alt .process-step:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 560px) {
+  .site-shell .process-steps-alt .prose {
+    grid-template-columns: 1fr;
+  }
+
+  .site-shell .process-steps-alt .process-step,
+  .site-shell .process-steps-alt .process-step:nth-child(3) {
+    min-height: 0;
+    padding: 1.8rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 0;
+  }
+
+  .site-shell .process-steps-alt .process-step:first-child {
+    border-top: 0;
+  }
+
+  .site-shell .process-steps-alt .process-step h3 {
+    margin-top: 1.75rem;
+  }
+}
+
+/* CMS row: blue conversation call-to-action ----------------------------- */
+
+.site-shell .conversation-cta-row > .grid {
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 8rem);
+}
+
+.site-shell .conversation-cta-title .prose,
+.site-shell .conversation-cta-copy .prose {
+  max-width: none;
+}
+
+.site-shell .conversation-cta-title .prose > p:first-child {
+  margin: 0 0 1.35rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-shell .conversation-cta-title .prose > h3 {
+  max-width: 8ch;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(3.5rem, 7.2vw, 6.6rem);
+  font-weight: 780;
+  letter-spacing: -0.075em;
+  line-height: 0.85;
+}
+
+.site-shell .conversation-cta-copy .prose {
+  max-width: 32rem;
+}
+
+.site-shell .conversation-cta-copy .prose > p:first-child {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 1.45vw, 1.15rem);
+  font-weight: 550;
+  line-height: 1.55;
+}
+
+.site-shell .conversation-cta-copy .prose a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.4rem;
+  margin-top: 1.9rem;
+  padding: 0.9rem 1.25rem;
+  color: #fff;
+  background: #000;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.site-shell .conversation-cta-copy .prose a:hover,
+.site-shell .conversation-cta-copy .prose a:focus-visible {
+  color: #07111f;
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.site-shell .conversation-cta-button {
+  margin-top: 0;
+}
+
+.site-shell .conversation-cta-button a {
+  min-height: 3.4rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 0;
+  color: #fff;
+  background: #000;
+  box-shadow: none;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.site-shell .conversation-cta-button a:hover,
+.site-shell .conversation-cta-button a:focus-visible {
+  color: #07111f;
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .site-shell .conversation-cta-row > .grid {
+    gap: 2.75rem;
+  }
+
+  .site-shell .conversation-cta-title .prose > h3 {
+    max-width: 9ch;
+    font-size: clamp(3.3rem, 15vw, 5.6rem);
+  }
+}
+
 /* CMS row: What I Solve introductory statement ------------------------- */
 
 .site-shell .problem-intro-row {
@@ -974,7 +1167,7 @@ body {
   color: #fff;
   background: linear-gradient(135deg, #008cff, #006ce3);
   font-size: 0.88rem;
-  font-weight: 780;
+  font-weight: 850;
   letter-spacing: -0.01em;
   box-shadow: 0 0.55rem 1.25rem rgba(0, 102, 220, 0.28);
   transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;

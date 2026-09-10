@@ -64,7 +64,7 @@ export function SiteHeader({ settings }: { settings: SiteSettingsDocument | null
         <NavLinks items={settings?.primaryNavigation} className="atomic-site-header__menu" label="Primary navigation" />
 
         <Link href="/contact" className="atomic-site-header__contact">
-          Contact
+          Start a Conversation
         </Link>
       </div>
     </header>
