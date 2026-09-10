@@ -1197,16 +1197,6 @@ body {
     linear-gradient(135deg, #07111f, #101e2f 65%, #07111f);
 }
 
-.atomic-site-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: min(32rem, 60%);
-  height: 2px;
-  background: var(--color-blue);
-}
-
 .atomic-site-footer__inner {
   display: grid;
   grid-template-columns: minmax(13rem, 1.35fr) minmax(8rem, 0.65fr) minmax(13rem, 1fr);
