@@ -1,20 +1,20 @@
 /**
- * Atomic CMS page builder — MCP server (stdio).
+ * Atomic CMS page builder — MCP server (stdio transport).
  *
  * Talks to Payload through the Local API, so it operates on whatever database
  * DATABASE_URI points at. Run it with:  npm run mcp
+ *
+ * For editing a deployed site, use the HTTP transport instead — see
+ * src/app/api/mcp/route.ts and the README.
  */
 import 'dotenv/config'
 
 import { Writable } from 'node:stream'
 
-import { Server } from '@modelcontextprotocol/sdk/server/index.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
-import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js'
 import { getPayload, type Payload } from 'payload'
 
-import { BuilderValidationError } from './compact'
-import { toolMap, tools } from './tools'
+import { createMcpServer } from './create-server'
 
 /**
  * stdout is the JSON-RPC channel. Payload's logger writes there too, which would
@@ -46,48 +46,8 @@ const client = async (): Promise<Payload> => {
   return payloadPromise
 }
 
-const server = new Server(
-  { name: 'atomic-page-builder', version: '0.1.0' },
-  { capabilities: { tools: {} } },
-)
-
-server.setRequestHandler(ListToolsRequestSchema, async () => ({
-  tools: tools.map(({ name, description, inputSchema }) => ({ name, description, inputSchema })),
-}))
-
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  const tool = toolMap.get(request.params.name)
-
-  if (!tool) {
-    return {
-      isError: true,
-      content: [{ type: 'text' as const, text: `Unknown tool: ${request.params.name}` }],
-    }
-  }
-
-  try {
-    const result = await tool.handler(await client(), request.params.arguments ?? {})
-
-    return {
-      content: [
-        { type: 'text' as const, text: typeof result === 'string' ? result : JSON.stringify(result, null, 2) },
-      ],
-    }
-  } catch (error) {
-    // Validation errors name the exact path that failed, so surface them verbatim —
-    // they are what lets the model correct its own payload without a round trip.
-    const message =
-      error instanceof BuilderValidationError
-        ? `Invalid builder content — ${error.message}`
-        : error instanceof Error
-          ? error.message
-          : String(error)
-
-    return { isError: true, content: [{ type: 'text' as const, text: message }] }
-  }
-})
-
 const start = async () => {
+  const server = createMcpServer(client)
   await server.connect(new StdioServerTransport(process.stdin, protocolStdout))
   process.stderr.write('atomic-page-builder MCP server ready\n')
 }

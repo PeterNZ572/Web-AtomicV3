@@ -76,6 +76,7 @@ a "create your first admin user" screen. Once created, you're in.
 | `CRON_SECRET` | yes | Random string protecting internal cron-triggered endpoints |
 | `SMTP_API_KEY` / `SMTP_FROM` / `SMTP_FROM_NAME` | yes | SMTP2GO credentials for outgoing email |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | no | Leave blank to disable Cloudflare Turnstile on forms |
+| `MCP_SECRET` | no | Bearer token for the AI page-builder endpoint at `/api/mcp`. **Grants full admin control over pages, media and site settings** — leave blank to keep the endpoint disabled (returns 503). Must be ≥32 chars; generate with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. See `src/mcp/README.md` |
 | `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY` / `S3_BUCKET` / `S3_ENDPOINT` / `S3_REGION` / `S3_PUBLIC_URL` | no | Leave blank to store media on local disk instead of R2/S3 |
 
 R2 backup credentials (endpoint, access key, secret, bucket, retention counts)

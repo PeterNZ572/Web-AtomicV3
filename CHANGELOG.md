@@ -10,6 +10,8 @@ All notable changes to `@peternz572/cms` are documented here.
 - Page builder MCP server (`src/mcp/`) — lets an AI assistant build, edit, structure and style pages through the content builder over the Payload Local API. 13 tools covering schema discovery, page CRUD, targeted structural edits, media uploads and site-wide settings. See `src/mcp/README.md`
 - `npm run mcp` script and project-scoped `.mcp.json` so MCP clients pick the server up from the repo root
 - Block and builder schemas are introspected from the live Payload config, so site-specific blocks added via `additionalBlocks` are exposed automatically
+- HTTP transport at `/api/mcp` (`src/app/api/mcp/route.ts`) so the same tools can build and edit pages on a **deployed** site. Because it runs inside Next.js, the Pages `afterChange` hook's `revalidateTag` actually fires and published edits appear immediately rather than waiting out the 1-hour data cache
+- `MCP_SECRET` env var — bearer token for that endpoint, which stays disabled (503) while unset and must be at least 32 characters
 
 ---
 
