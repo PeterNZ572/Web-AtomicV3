@@ -1,0 +1,9 @@
+[mcp_servers.atomic-page-builder]
+command = "npx"
+args = [
+    "tsx",
+    "src/mcp/server.ts",
+]
+
+[mcp_servers.atomic-page-builder.env]
+NODE_OPTIONS = "--no-deprecation"
