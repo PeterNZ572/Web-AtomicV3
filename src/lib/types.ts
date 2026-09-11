@@ -120,5 +120,7 @@ export type SiteSettingsDocument = {
   socialLinks?: { platform?: string; url?: string }[]
   globalCustomCss?: string
   ga4MeasurementId?: string
+  googleAdsId?: string
+  googleAdsConversionEvent?: string
   seo?: SeoFields
 }

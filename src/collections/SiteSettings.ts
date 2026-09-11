@@ -114,6 +114,25 @@ export const SiteSettings: CollectionConfig = {
                 placeholder: 'G-XXXXXXXXXX',
               },
             },
+            {
+              name: 'googleAdsId',
+              type: 'text',
+              label: 'Google Ads Conversion ID',
+              admin: {
+                description: 'Google Ads tag ID (e.g. AW-XXXXXXXXX). Leave blank to disable Ads conversion tracking.',
+                placeholder: 'AW-XXXXXXXXX',
+              },
+            },
+            {
+              name: 'googleAdsConversionEvent',
+              type: 'text',
+              label: 'Contact Form Conversion Event',
+              admin: {
+                description:
+                  'Event name from the Google Ads conversion snippet (e.g. ads_conversion_Contact_Us_1). Fired when a contact form is submitted successfully.',
+                placeholder: 'ads_conversion_Contact_Us_1',
+              },
+            },
           ],
         },
         {

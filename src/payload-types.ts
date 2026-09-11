@@ -2061,6 +2061,14 @@ export interface SiteSetting {
    */
   ga4MeasurementId?: string | null;
   /**
+   * Google Ads tag ID (e.g. AW-XXXXXXXXX). Leave blank to disable Ads conversion tracking.
+   */
+  googleAdsId?: string | null;
+  /**
+   * Event name from the Google Ads conversion snippet (e.g. ads_conversion_Contact_Us_1). Fired when a contact form is submitted successfully.
+   */
+  googleAdsConversionEvent?: string | null;
+  /**
    * Site Name and Tagline (Brand tab) are used as the default SEO title and description.
    */
   seo?: {
@@ -3756,6 +3764,8 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   footerBlurb?: T;
   globalCustomCss?: T;
   ga4MeasurementId?: T;
+  googleAdsId?: T;
+  googleAdsConversionEvent?: T;
   seo?:
     | T
     | {

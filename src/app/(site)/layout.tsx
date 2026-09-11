@@ -11,7 +11,11 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
 
   return (
     <div className="site-shell">
-      {settings?.ga4MeasurementId ? <Ga4Script measurementId={settings.ga4MeasurementId} /> : null}
+      <Ga4Script
+        measurementId={settings?.ga4MeasurementId ?? undefined}
+        googleAdsId={settings?.googleAdsId ?? undefined}
+        conversionEventName={settings?.googleAdsConversionEvent ?? undefined}
+      />
       {settings?.globalCustomCss ? <style>{settings.globalCustomCss}</style> : null}
       <SiteHeader settings={settings} />
       {children}

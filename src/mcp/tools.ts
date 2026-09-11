@@ -626,6 +626,8 @@ export const tools: ToolDefinition[] = [
       phone: str('Contact phone'),
       address: str('Contact address'),
       ga4MeasurementId: str('Google Analytics 4 measurement id'),
+      googleAdsId: str('Google Ads tag id (AW-XXXXXXXXX)'),
+      googleAdsConversionEvent: str('Google Ads conversion event name fired on contact form submit'),
       primaryNavigation: {
         type: 'array',
         description: 'Primary nav items, replaces the existing list',

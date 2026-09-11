@@ -15,6 +15,7 @@ declare global {
       remove: (widgetId: string) => void
     }
     gtag?: (...args: unknown[]) => void
+    __adsConversionEvent?: string
   }
 }
 
@@ -160,6 +161,15 @@ export const FormBlockView = ({
           form_name: formTitle,
           page_slug: pageSlug,
         })
+
+        // Google Ads conversion. The form submits over fetch and never navigates,
+        // so the event fires directly instead of through Google's gtagSendEvent helper.
+        if (window.__adsConversionEvent) {
+          window.gtag('event', window.__adsConversionEvent, {
+            form_name: formTitle,
+            page_slug: pageSlug,
+          })
+        }
       }
 
       setStatus('success')
