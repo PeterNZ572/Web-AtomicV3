@@ -3,13 +3,12 @@ import type { ReactNode } from 'react'
 
 import { getSiteSettings } from '@/lib/content'
 import { mediaToUrl } from '@/lib/seo'
+import { getSiteUrl } from '@/lib/site-url'
 
 import '@/styles/globals.css'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const metadataBase = new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
-  )
+  const metadataBase = new URL(getSiteUrl())
 
   try {
     const settings = await getSiteSettings()

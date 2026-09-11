@@ -1,7 +1,9 @@
 import type { MetadataRoute } from 'next'
 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+import { getRequestSiteUrl } from '@/lib/site-url'
+
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const baseUrl = await getRequestSiteUrl()
 
   return {
     rules: {
