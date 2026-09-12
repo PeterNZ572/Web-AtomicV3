@@ -7,6 +7,7 @@ export type ProjectDocument = {
   client: string
   industry?: string
   summary: string
+  demo?: { name?: string | null; url?: string | null } | null
   featured?: boolean
   services?: { item?: string }[] | string[]
   results?: { value?: string; label?: string }[]

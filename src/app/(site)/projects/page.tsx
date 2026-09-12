@@ -5,6 +5,12 @@ import { buildMetadata } from '@/lib/seo'
 
 import styles from './projects.module.css'
 
+// A fixed path with no params would otherwise be prerendered at build time,
+// where the database isn't reachable — baking the empty state into the page.
+// (site)/page.tsx opts out for the same reason; the [slug] routes are already
+// dynamic because they have params and no generateStaticParams.
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   return buildMetadata({
     title: 'Projects — Atomic Digital',

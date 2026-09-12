@@ -47,6 +47,37 @@ export const Projects: CollectionConfig = {
               ],
             },
             { name: 'summary', type: 'textarea', required: true },
+            {
+              name: 'demo',
+              type: 'group',
+              label: 'Demo link',
+              admin: {
+                description:
+                  'Optional. Shown in the project sidebar under Client and Industry. Leave the URL blank to hide it.',
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'name',
+                      type: 'text',
+                      label: 'Name',
+                      admin: { description: 'Link text, e.g. "View live demo".' },
+                    },
+                    {
+                      name: 'url',
+                      type: 'text',
+                      label: 'URL',
+                      validate: (value: unknown) =>
+                        !value ||
+                        (typeof value === 'string' && /^(https?:\/\/|\/)/.test(value)) ||
+                        'Enter a full URL starting with https:// or a path starting with /',
+                    },
+                  ],
+                },
+              ],
+            },
             { name: 'featured', type: 'checkbox', defaultValue: false },
             {
               name: 'services',

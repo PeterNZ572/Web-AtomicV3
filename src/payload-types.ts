@@ -1911,6 +1911,16 @@ export interface Project {
   client: string;
   industry?: string | null;
   summary: string;
+  /**
+   * Optional. Shown in the project sidebar under Client and Industry. Leave the URL blank to hide it.
+   */
+  demo?: {
+    /**
+     * Link text, e.g. "View live demo".
+     */
+    name?: string | null;
+    url?: string | null;
+  };
   featured?: boolean | null;
   services?:
     | {
@@ -3820,6 +3830,12 @@ export interface ProjectsSelect<T extends boolean = true> {
   client?: T;
   industry?: T;
   summary?: T;
+  demo?:
+    | T
+    | {
+        name?: T;
+        url?: T;
+      };
   featured?: T;
   services?:
     | T

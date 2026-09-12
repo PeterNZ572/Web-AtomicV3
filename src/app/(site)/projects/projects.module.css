@@ -111,6 +111,16 @@
   font-size: 15px;
 }
 
+.demoLink {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.demoLink:hover,
+.demoLink:focus-visible {
+  text-decoration: underline;
+}
+
 .serviceStrip {
   display: grid;
   grid-auto-flow: column;

@@ -52,6 +52,7 @@ export default async function ProjectPage({ params }: Props) {
     .map((item) => resolveMediaUrl(item as MediaDocument | string))
     .filter((url): url is string => Boolean(url))
   const testimonial = asTestimonial(project.testimonial)
+  const demoUrl = project.demo?.url?.trim() || null
 
   const story = [
     { label: 'Challenge', content: project.challenge },
@@ -80,6 +81,21 @@ export default async function ProjectPage({ params }: Props) {
                 <div>
                   <small>Industry</small>
                   <strong>{project.industry}</strong>
+                </div>
+              ) : null}
+              {demoUrl ? (
+                <div>
+                  <small>Demo</small>
+                  <strong>
+                    <a
+                      className={styles.demoLink}
+                      href={demoUrl}
+                      target={demoUrl.startsWith('/') ? undefined : '_blank'}
+                      rel={demoUrl.startsWith('/') ? undefined : 'noreferrer'}
+                    >
+                      {project.demo?.name || 'View demo'} →
+                    </a>
+                  </strong>
                 </div>
               ) : null}
             </div>
