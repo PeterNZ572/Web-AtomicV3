@@ -8,14 +8,19 @@ export const getProjects = cache(
   async (options?: { featured?: boolean; limit?: number }): Promise<ProjectDocument[]> => {
     const payload = await getPayloadClient()
 
-    const where =
-      typeof options?.featured === 'boolean'
+    // The local API runs with overrideAccess, so the collection's
+    // publishedOrLoggedIn rule doesn't apply here — drafts must be excluded
+    // explicitly or unpublished projects leak onto the public site.
+    const where = {
+      _status: { equals: 'published' },
+      ...(typeof options?.featured === 'boolean'
         ? {
             featured: {
               equals: options.featured,
             },
           }
-        : undefined
+        : {}),
+    }
 
     const result = await payload.find({
       collection: 'projects',
@@ -38,6 +43,9 @@ export const getProjectBySlug = cache(async (slug: string): Promise<ProjectDocum
     where: {
       slug: {
         equals: slug,
+      },
+      _status: {
+        equals: 'published',
       },
     },
   })
