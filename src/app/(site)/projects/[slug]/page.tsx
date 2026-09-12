@@ -9,6 +9,7 @@ import { resolveMediaUrl } from '@/components/page-builder/helpers'
 import type { MediaDocument, TestimonialDocument } from '@/lib/types'
 import { buildMetadata } from '@/lib/seo'
 
+import { ProjectGallery } from './project-gallery'
 import styles from '../projects.module.css'
 
 // Rendered per request for the same reason as (site)/[slug]: the database
@@ -177,19 +178,7 @@ export default async function ProjectPage({ params }: Props) {
               <h2>A closer look at the system.</h2>
             </div>
 
-            <div className={styles.galleryGrid}>
-              {gallery.map((url, index) => (
-                <div key={url} className={styles.galleryCard}>
-                  <Image
-                    src={url}
-                    alt={`${project.title} — image ${index + 1}`}
-                    width={1200}
-                    height={900}
-                    unoptimized
-                  />
-                </div>
-              ))}
-            </div>
+            <ProjectGallery title={project.title} images={gallery} />
           </div>
         </section>
       ) : null}

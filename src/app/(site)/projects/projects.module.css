@@ -276,15 +276,120 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  width: 100%;
   min-height: 420px;
+  padding: 0;
   border: 2px solid #000;
   background: #eef1f4;
+  cursor: zoom-in;
 }
 
 .galleryCard img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.galleryCard:hover img,
+.galleryCard:focus-visible img {
+  transform: scale(1.04);
+}
+
+.galleryCard:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* ─── Gallery lightbox ──────────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: rgba(5, 5, 5, 0.92);
+  inset: 0;
+  cursor: zoom-out;
+}
+
+.lightboxStage {
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  border: 2px solid #000;
+  cursor: default;
+}
+
+.lightboxStage img {
+  width: auto;
+  height: auto;
+  max-width: min(1240px, 100%);
+  max-height: calc(100vh - 96px);
+  object-fit: contain;
+}
+
+.lightboxClose,
+.lightboxNav {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.lightboxClose:hover,
+.lightboxNav:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.lightboxClose:focus-visible,
+.lightboxNav:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.lightboxClose {
+  top: 24px;
+  right: 24px;
+}
+
+.lightboxNav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightboxPrev {
+  left: 24px;
+}
+
+.lightboxNext {
+  right: 24px;
+}
+
+.lightboxCount {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  transform: translateX(-50%);
 }
 
 /* ─── Testimonial ───────────────────────────────────────────────────── */
@@ -504,6 +609,45 @@
   .card {
     padding: 28px 0;
     border-right: 0;
+  }
+
+  .lightbox {
+    padding: 76px 16px;
+  }
+
+  .lightboxStage img {
+    max-height: calc(100vh - 152px);
+  }
+
+  .lightboxClose,
+  .lightboxNav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightboxClose {
+    top: 16px;
+    right: 16px;
+  }
+
+  /* Side arrows would sit on top of the image at this width — put them in a
+     row under it, next to the counter. */
+  .lightboxNav {
+    top: auto;
+    bottom: 16px;
+    transform: none;
+  }
+
+  .lightboxPrev {
+    left: 16px;
+  }
+
+  .lightboxNext {
+    right: 16px;
+  }
+
+  .lightboxCount {
+    bottom: 30px;
   }
 }
 
