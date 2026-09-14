@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { MobileNav, type ResolvedNavItem } from '@/components/mobile-nav'
 import type { MediaDocument, SiteSettingsDocument } from '@/lib/types'
 
 type NavigationItem = { label?: string; slug?: string }
@@ -43,6 +44,15 @@ const NavLinks = ({
   </nav>
 )
 
+// The mobile drawer is a client component, so hrefs are resolved here to keep
+// the slug rules in one place and the props serialisable.
+const resolveNavItems = (items?: NavigationItem[]): ResolvedNavItem[] =>
+  items?.flatMap((item) => {
+    if (!item.label || !item.slug) return []
+    const href = hrefFor(item.slug)
+    return [{ label: item.label, href, external: isExternal(href) }]
+  }) ?? []
+
 export function SiteHeader({ settings }: { settings: SiteSettingsDocument | null }) {
   const logoUrl = originalMediaUrl(settings?.logo)
   const siteName = settings?.siteName || 'Atomic Digital'
@@ -66,6 +76,12 @@ export function SiteHeader({ settings }: { settings: SiteSettingsDocument | null
         <Link href="/contact" className="atomic-site-header__contact">
           Start a Conversation
         </Link>
+
+        <MobileNav
+          items={resolveNavItems(settings?.primaryNavigation)}
+          ctaLabel="Start a Conversation"
+          ctaHref="/contact"
+        />
       </div>
     </header>
   )

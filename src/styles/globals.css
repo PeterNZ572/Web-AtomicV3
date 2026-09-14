@@ -1186,6 +1186,114 @@ body {
   transform: translateY(-1px);
 }
 
+/* Hamburger + drawer: hidden above the 800px breakpoint, where the inline menu wins. */
+.atomic-site-header__burger,
+.atomic-mobile-nav,
+.atomic-mobile-nav__overlay {
+  display: none;
+}
+
+.atomic-site-header__burger {
+  justify-self: end;
+  align-items: center;
+  justify-content: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.65rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.atomic-site-header__burger-bars {
+  display: grid;
+  gap: 0.3rem;
+  width: 1.25rem;
+}
+
+.atomic-site-header__burger-bars span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 180ms ease, opacity 140ms ease;
+}
+
+.atomic-site-header__burger-bars[data-open] span:nth-child(1) {
+  transform: translateY(0.5rem) rotate(45deg);
+}
+
+.atomic-site-header__burger-bars[data-open] span:nth-child(2) {
+  opacity: 0;
+}
+
+.atomic-site-header__burger-bars[data-open] span:nth-child(3) {
+  transform: translateY(-0.5rem) rotate(-45deg);
+}
+
+.atomic-mobile-nav__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(4, 10, 18, 0.6);
+}
+
+.atomic-mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2001;
+  align-content: start;
+  gap: 0.35rem;
+  width: min(20rem, 86vw);
+  padding: 5.5rem 1.5rem 2rem;
+  overflow-y: auto;
+  border-left: 1px solid rgba(255, 255, 255, 0.13);
+  background: linear-gradient(160deg, #0b1727, #07111f);
+  box-shadow: -1.5rem 0 3rem rgba(0, 0, 0, 0.45);
+  /* It renders outside `.site-shell`, so the shell's font and link resets don't reach it. */
+  font-family: Aptos, "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+.atomic-mobile-nav a {
+  text-decoration: none;
+}
+
+.atomic-mobile-nav__menu {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.atomic-mobile-nav__menu a {
+  padding: 0.85rem 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.atomic-mobile-nav__menu a:hover,
+.atomic-mobile-nav__menu a:focus-visible {
+  color: #fff;
+}
+
+.atomic-mobile-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  margin-top: 1.5rem;
+  border-radius: 0.65rem;
+  color: #fff;
+  background: linear-gradient(135deg, #008cff, #006ce3);
+  font-size: 0.95rem;
+  font-weight: 850;
+  box-shadow: 0 0.55rem 1.25rem rgba(0, 102, 220, 0.28);
+}
+
 .atomic-site-footer {
   position: relative;
   overflow: hidden;
@@ -1283,16 +1391,39 @@ body {
 }
 
 @media (max-width: 800px) {
+  /* Flex rather than the desktop grid: only the brand and the burger remain,
+     so space-between pins the burger to the right edge of the container. */
   .atomic-site-header__inner {
-    grid-template-columns: 1fr auto;
-    padding: 1rem 0;
+    min-height: 5.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
   }
 
-  .atomic-site-header__menu {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: flex-start;
-    gap: 0.75rem 1.25rem;
+  /* The inline menu and CTA both collapse into the drawer below this width. */
+  .atomic-site-header__menu,
+  .atomic-site-header__contact {
+    display: none;
+  }
+
+  .atomic-site-header__burger {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-inline-start: auto;
+  }
+
+  .atomic-site-header__brand {
+    width: 10rem;
+    height: 4.5rem;
+  }
+
+  .atomic-mobile-nav {
+    display: grid;
+  }
+
+  .atomic-mobile-nav__overlay {
+    display: block;
   }
 
   .atomic-site-footer {
